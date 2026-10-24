@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>New Tab</title>
+<title>AURIX</title>
 <link rel="stylesheet" href="chrome://resources/brave/css/reset.css">
 <link rel="stylesheet" href="chrome://resources/css/text_defaults.css">
 <link rel="stylesheet" href="chrome://resources/brave/fonts/poppins.css">
@@ -14,25 +14,76 @@
 <script src="/strings.js"></script>
 <script src="/brave_new_tab.bundle.js" type="module"></script>
 <style>
-  body {
-    background: $i18n{backgroundColor};
+  :root {
+    --aurix-accent: #ff334f;
+    --aurix-accent-hover: #ff5269;
+    --aurix-focus-ring: rgba(255, 51, 79, 0.72);
   }
+
+  body {
+    background:
+      radial-gradient(ellipse at 12% 0%, rgba(255, 51, 79, 0.105), transparent 42%),
+      $i18n{backgroundColor};
+  }
+
   #root {
     height: 100%;
   }
 
+  ::selection {
+    background: rgba(255, 51, 79, 0.28);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--aurix-focus-ring);
+    outline-offset: 2px;
+  }
+
+  a,
+  button,
+  [role="button"] {
+    -webkit-tap-highlight-color: transparent;
+  }
+
   ::-webkit-scrollbar {
-      width: 6px;
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
   }
 
   ::-webkit-scrollbar-thumb {
-      background: var(--leo-color-neutral-40);
-      border-radius: var(--leo-spacing-m);
+    background: rgba(150, 150, 160, 0.46);
+    border: 2px solid transparent;
+    border-radius: 999px;
+    background-clip: padding-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 51, 79, 0.7);
+    border: 2px solid transparent;
+    background-clip: padding-box;
   }
 
   @media (prefers-color-scheme: dark) {
     ::-webkit-scrollbar-thumb {
-      background: var(--leo-color-neutral-20);
+      background: rgba(190, 190, 200, 0.3);
+      border: 2px solid transparent;
+      background-clip: padding-box;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 51, 79, 0.7);
+      border: 2px solid transparent;
+      background-clip: padding-box;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    ::-webkit-scrollbar-thumb {
+      transition: background-color 140ms ease;
     }
   }
 </style>
